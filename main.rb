@@ -4,12 +4,9 @@ require "pry"
 require 'json'
 require "net/http"
 require "uri"
+require "date"
 
-
-
-
-
-
+require_relative "functions.rb"
 
 # Homepage
 get '/' do 
@@ -18,7 +15,10 @@ end
 
 post '/save_painting' do
 	stuffToRead = params["saveArt"]
-	saveLine = Time.now.to_s.chomp + "," + stuffToRead.chomp	
+	# binding.pry
+	saveLine = DateTime.now.strftime("%H:%M:%S").to_s.chomp + "," + stuffToRead.chomp
+	#saveLine = Time.now.to_s.chomp + "," + stuffToRead.tr!("\"", "-").chomp	
+	# binding.pry
 	File.open("saves.txt", "a") do |line|
 		line.puts saveLine.chomp
 	end

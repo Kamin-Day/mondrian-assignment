@@ -51,6 +51,10 @@ body {
   cursor: pointer;
 }
 
+.row{
+  background-color: white;
+}
+
 #red {
   background-color: #cc0000;
 }
