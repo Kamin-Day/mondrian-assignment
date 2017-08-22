@@ -1,0 +1,7 @@
+Date,Info
+["blue","yellow","yellow","blue","yellow","blue","blue","yellow","yellow","blue","blue","yellow","blue","yellow","yellow","blue"]
+2017-08-22 13:36:05 -0500,["red","red","red","red","blue","blue","blue","blue","yellow","yellow","yellow","yellow","white","white","white","white"]
+2017-08-22 13:38:33 -0500,["yellow","blue","blue","red","blue","yellow","blue","yellow","red","red","yellow","blue","white","white","white","white"]
+2017-08-22 13:40:13 -0500,["red","","yellow","","","red","red","red","red","red","yellow","yellow","red","yellow","","yellow"]
+2017-08-22 13:40:20 -0500,["red","blue","yellow","blue","blue","blue","red","red","red","red","yellow","yellow","red","yellow","blue","yellow"]
+2017-08-22 13:40:33 -0500,["yellow","yellow","yellow","blue","blue","yellow","red","blue","blue","red","yellow","blue","red","blue","blue","yellow"]

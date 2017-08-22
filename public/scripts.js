@@ -21,36 +21,38 @@ window.addEventListener("load", function(){
     }
 
 //Save button
-	var save = document.getElementById("save_button")[0];
-	save.addEventListener("click", savePainting)
-	event.preventDefault();
+	var saveButton = document.getElementById("save_button");
+	
+	saveButton.addEventListener("click", function(){
+		event.preventDefault();
+		savePainting(event);
+	});
 
 
 // Creates an array of color values to save a painting.
-	var savePainting = function(){
+	var savePainting = function(event){
 		var boxColors =[];
 		for (var i = 0; i < rows.length; i++){
 		
 				boxColors.push(rows[i].style.backgroundColor);
 		}
 		var data = "?saveArt=" + JSON.stringify(boxColors);
-		window.history.replaceState(null, null, "/" + data);
+		// window.history.replaceState(null, null, "/" + data);
 
-
+		
 		var request = new XMLHttpRequest();
-		request.open("GET", "/save_painting"); // + JSON.stringify(boxColors));
-
+		request.open("POST", "/save_painting" + data);
 		request.send()
-		debugger;
+		
 		request.addEventListener("load", alert_Save_Success)
 
-		// // saveToFile(boxColors)
-		// return boxColors;
+		// saveToFile(boxColors)
+		//return boxColors;
 	}
 	var alert_Save_Success = function(event){
-		alert("Good job");
+		alert("Good job! Your masterpiece has been preserved.");
 		var request = event.target; 
-		alert(request.response);
+		
 	}
 
 });
