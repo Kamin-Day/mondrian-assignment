@@ -25,6 +25,14 @@ post '/save_painting' do
 	erb :imgsaved
 end
 
+post '/load_painting' do
+	loadSelection = params["loadArt"]
+	loadPaintingInfo(loadSelection)
+
+end
+
+
+
 
 # JSON.parse	
 	# endstuffToRead.length.times do |i|

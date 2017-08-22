@@ -2,3 +2,6 @@ Date,Data
 15:42:35,wwwwbbwwwbwwwwww
 15:43:06,wwwwyyywbbwwwwww
 15:43:29,wwwwyyywbbwwwwww
+17:42:43,rrwwbyyrwrywwrww
+17:42:49,rrwwbbybwrywwbwb
+17:42:53,rrbbbbybwrywwbwb

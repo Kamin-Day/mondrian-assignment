@@ -21,13 +21,45 @@ window.addEventListener("load", function(){
     }
 //Save button
 	var saveButton = document.getElementById("save_button");
-	
 	saveButton.addEventListener("click", function(){
 		event.preventDefault();
 		savePainting(event);
 	});
 
+	var loadButton = document.getElementById("load");
+	loadButton.addEventListener("click", function(){
 
+
+		event.preventDefault();
+		var currentSelection = document.getElementsByTagName("form")[0].childNodes[1];
+		var chosenSelection = currentSelection.options[currentSelection.selectedIndex].text;
+					
+		var request = new XMLHttpRequest();
+		request.open("POST", "/load_painting?loadArt=" + chosenSelection);
+		request.send()
+	
+		request.addEventListener("load", refillCanvas)
+	});
+
+	var refillCanvas = function(event){
+		var request = event.target; 
+		alert(request.response);
+
+
+		var testcolors = "wwwwyyywbbwwwwww";
+		for (var e = 0; e <rows.length; e++){
+			if (request.response.charAt(e) == "w"){
+				rows[e].style.backgroundColor = "white"
+			} else if (request.response.charAt(e) == "y"){
+				rows[e].style.backgroundColor = "yellow"
+			} else if (request.response.charAt(e) == "r"){
+				rows[e].style.backgroundColor = "red"
+			} else if (request.response.charAt(e) == "b"){
+				rows[e].style.backgroundColor = "blue"
+			}
+		}
+		
+	}
 
 
 
@@ -54,6 +86,13 @@ window.addEventListener("load", function(){
 
 
 
+	var alert_Save_Success = function(event){
+		alert("Good job! Your masterpiece has been preserved.");
+		var request = event.target; 
+		
+	}
+
+});
 
 
 
@@ -82,13 +121,6 @@ window.addEventListener("load", function(){
 
 
 
-	var alert_Save_Success = function(event){
-		alert("Good job! Your masterpiece has been preserved.");
-		var request = event.target; 
-		
-	}
-
-});
 // ====================================================================================
 // I WANT TO push the button, and tell the sinatra server i want to save.
 // i will create a string of params and then send them to the address of the controller. 

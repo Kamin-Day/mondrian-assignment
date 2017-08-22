@@ -26,19 +26,27 @@ def createLoadList
 	data = []	 #Array to hold save color information
 	CSV.foreach("saves.txt", {headers: true, return_headers: false}) do |row|			
 	  date.push(row["Date"].chomp)
-	  				data.push(row["Data"].chomp)
+	  data.push(row["Data"].chomp)
 	end
 	saves.push(date)
 	saves.push(data)# function to create a form with a drop down list of saves
-	listForm = "<form action=\"/load_paintings\"> <select name=\"Paintings\">"
+	listForm = "<form action=\"/load_painting\" method=\"POST\"> <select name=\"Paintings\">"
 	date.each do |date|
 		listForm += "<option value =\"" + date + "\">" + date + "</option>"
 	end
-	listForm += "</select><br><br><input type=\"submit\"></form>"
+	listForm += "</select><br><br><input type=\"submit\" id=\"load\"></form>"
 	return listForm
 end
 
-
+def loadPaintingInfo(date)
+	info =""
+	CSV.foreach("saves.txt", {headers: true, return_headers: false}) do |row|			
+		if date == row["Date"].chomp
+			info = row["Data"].chomp
+		end
+	end
+	return info
+end
 # <form action="/action_page.php">
 #   <select name="cars">
 #     <option value="volvo">Volvo</option>
